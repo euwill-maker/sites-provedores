@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Arealnet — A melhor internet de fibra óptica da sua cidade. Planos a partir de R$119/mês com instalação grátis e suporte 24h.">
+<title>Arealnet — Internet Fibra Óptica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #E30613;
+  --yellow: #F5A623;
+  --green: #22A846;
+  --green-dark: #1a8a38;
+  --dark: #111111;
+  --gray-bg: #F5F5F5;
+  --text-muted: #555555;
+  --maxw: 1180px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Montserrat', sans-serif; color: var(--dark); overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+
+/* ── UTILITIES ─────────────────── */
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+.red { color: var(--red); }
+.yellow { color: var(--yellow); }
+
+.btn-green {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--green); color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase;
+  padding: 14px 30px; border-radius: 50px; border: none;
+  cursor: pointer; text-decoration: none;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(34,168,70,0.35);
+  white-space: nowrap;
+}
+.btn-green:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(34,168,70,0.4); }
+.btn-green-lg { font-size: 15px; padding: 16px 36px; }
+
+.section-title {
+  font-size: clamp(22px, 3vw, 36px);
+  font-weight: 900; text-transform: uppercase; line-height: 1.15;
+  margin-bottom: 10px;
+}
+.section-sub { color: var(--text-muted); font-size: 15px; }
+
+/* ── LOGO ─────────────────────── */
+.logo-link {
+  display: inline-flex; align-items: center; gap: 3px;
+  text-decoration: none; line-height: 1;
+}
+.logo-text {
+  font-family: 'Nunito', 'Montserrat', sans-serif;
+  font-weight: 900; font-size: 30px; color: var(--red);
+  letter-spacing: -0.5px; line-height: 1;
+}
+.logo-right {
+  display: flex; flex-direction: column;
+  align-items: flex-start; justify-content: center;
+  gap: 0; margin-left: 2px; padding-bottom: 2px;
+}
+.logo-net {
+  font-family: 'Nunito', 'Montserrat', sans-serif;
+  font-weight: 800; font-size: 12px; color: var(--yellow);
+  letter-spacing: 0.02em; line-height: 1.1;
+}
+.logo-white .logo-text { color: white; }
+
+/* ── REVEAL ANIMATIONS ─────────── */
+.js-ready .reveal {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.js-ready .reveal.visible { opacity: 1; transform: translateY(0); }
+.js-ready .reveal-delay-1 { transition-delay: 0.1s; }
+.js-ready .reveal-delay-2 { transition-delay: 0.2s; }
+.js-ready .reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ── NAV ─────────────────────────── */
+.nav {
+  position: sticky; top: 0; z-index: 200;
+  background: white; box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+}
+.nav-inner {
+  max-width: var(--maxw); margin: 0 auto; padding: 0 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 70px;
+}
+.nav-menu { display: flex; align-items: center; gap: 36px; }
+.nav-menu a { font-size: 14px; font-weight: 600; color: var(--dark); transition: color 0.2s; }
+.nav-menu a:hover { color: var(--red); }
+
+/* ── HERO ──────────────────────────── */
+.hero {
+  background: var(--red) url('hero.png') 60% center/cover no-repeat;
+  min-height: 580px; position: relative; overflow: hidden;
+}
+.hero::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to right,
+    var(--red) 0%, var(--red) 32%,
+    rgba(227,6,19,0.88) 46%,
+    rgba(227,6,19,0.15) 65%,
+    transparent 80%
+  );
+}
+.hero-inner {
+  max-width: var(--maxw); margin: 0 auto; padding: 0 28px;
+  min-height: 580px; display: flex; align-items: center;
+  position: relative; z-index: 1;
+}
+.hero-content { max-width: 520px; padding: 70px 0; }
+.hero-title {
+  font-size: clamp(32px, 4.2vw, 60px);
+  font-weight: 900; text-transform: uppercase;
+  color: white; line-height: 1.06; margin-bottom: 18px;
+}
+.hero-sub {
+  color: rgba(255,255,255,0.9); font-size: 16px; line-height: 1.65;
+  margin-bottom: 34px; max-width: 400px;
+}
+
+/* ── BENEFITS ──────────────────────── */
+.benefits { background: white; padding: 80px 0; text-align: center; }
+.benefits-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 22px; margin-top: 44px;
+}
+.benefit-card {
+  background: var(--red); border-radius: 16px;
+  padding: 36px 28px; text-align: left;
+}
+.benefit-icon { margin-bottom: 18px; }
+.benefit-icon svg { width: 48px; height: 48px; }
+.benefit-title {
+  font-size: 15px; font-weight: 800; text-transform: uppercase;
+  color: white; margin-bottom: 12px; line-height: 1.3;
+}
+.benefit-desc { font-size: 13.5px; color: rgba(255,255,255,0.82); line-height: 1.65; }
+
+/* ── MID BANNER ────────────────────── */
+.mid-banner {
+  background: var(--red) url('banner-mid.png') 30% center/cover no-repeat;
+  min-height: 440px; position: relative; overflow: hidden;
+}
+.mid-banner::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to left,
+    var(--red) 0%, var(--red) 34%,
+    rgba(227,6,19,0.88) 50%,
+    rgba(227,6,19,0.15) 68%,
+    transparent 82%
+  );
+}
+.mid-banner-inner {
+  max-width: var(--maxw); margin: 0 auto; padding: 0 28px;
+  min-height: 440px; display: flex; align-items: center; justify-content: flex-end;
+  position: relative; z-index: 1;
+}
+.mid-banner-content { max-width: 500px; padding: 60px 0; }
+.mid-banner-title {
+  font-size: clamp(20px, 2.8vw, 36px);
+  font-weight: 900; text-transform: uppercase;
+  color: white; line-height: 1.2; margin-bottom: 30px;
+}
+
+/* ── PLANS ─────────────────────────── */
+.plans { background: var(--gray-bg); padding: 80px 0; }
+.plans .section-title { text-align: center; }
+.plans-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 22px; margin-top: 50px; align-items: start;
+}
+.plan-card {
+  background: white; border-radius: 18px;
+  border: 2px solid #E8E8E8; padding: 32px 26px 28px;
+  text-align: center; display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.plan-card:hover { transform: translateY(-5px); box-shadow: 0 16px 44px rgba(0,0,0,0.13); }
+.plan-card.featured {
+  background: var(--red); border-color: var(--red);
+  transform: scale(1.05);
+  box-shadow: 0 16px 44px rgba(227,6,19,0.32);
+}
+.plan-card.featured:hover { transform: scale(1.05) translateY(-5px); }
+.plan-badge {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  background: var(--yellow); color: var(--dark);
+  font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 6px 22px; border-radius: 0 0 12px 12px;
+}
+.plan-premium-badge {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  background: #111; color: white;
+  font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 6px 22px; border-radius: 0 0 12px 12px;
+}
+.plan-name {
+  font-size: 13px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--red); margin-top: 28px; margin-bottom: 4px;
+}
+.plan-card.featured .plan-name { color: var(--yellow); }
+.plan-card:not(.featured) .plan-name { margin-top: 14px; }
+.plan-speed {
+  font-size: 82px; font-weight: 900; line-height: 1; color: var(--red); letter-spacing: -3px;
+}
+.plan-card.featured .plan-speed { color: white; }
+.plan-unit {
+  font-size: 14px; font-weight: 700; color: #999; margin-bottom: 10px; text-transform: uppercase;
+}
+.plan-card.featured .plan-unit { color: rgba(255,255,255,0.7); }
+.plan-label {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 2px;
+}
+.plan-card.featured .plan-label { color: rgba(255,255,255,0.65); }
+.plan-price {
+  font-size: 14px; font-weight: 800; color: var(--dark); margin-bottom: 4px; line-height: 1.1;
+}
+.plan-price strong { font-size: 34px; }
+.plan-card.featured .plan-price { color: white; }
+.plan-period { font-size: 11px; color: #aaa; margin-bottom: 22px; }
+.plan-card.featured .plan-period { color: rgba(255,255,255,0.6); }
+.plan-features { list-style: none; text-align: left; margin-bottom: 24px; flex: 1; }
+.plan-features li {
+  font-size: 13px; padding: 9px 0; color: var(--text-muted);
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  display: flex; align-items: center; gap: 8px;
+}
+.plan-features li:last-child { border-bottom: none; }
+.plan-card.featured .plan-features li {
+  color: rgba(255,255,255,0.88); border-bottom-color: rgba(255,255,255,0.15);
+}
+.check { color: var(--green); font-weight: 800; font-size: 14px; }
+.plan-card.featured .check { color: var(--yellow); }
+
+/* ── ABOUT ─────────────────────────── */
+.about {
+  background: var(--red) url('banner-mid.png') 30% center/cover no-repeat;
+  min-height: 440px; position: relative; overflow: hidden;
+}
+.about::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to right,
+    transparent 18%,
+    rgba(227,6,19,0.2) 34%,
+    rgba(227,6,19,0.88) 52%,
+    var(--red) 66%,
+    var(--red) 100%
+  );
+}
+.about-inner {
+  max-width: var(--maxw); margin: 0 auto; padding: 0 28px;
+  min-height: 440px; display: flex; align-items: center; justify-content: flex-end;
+  position: relative; z-index: 1;
+}
+.about-content { max-width: 500px; padding: 60px 0; }
+.about-title {
+  font-size: clamp(26px, 3.5vw, 46px);
+  font-weight: 900; text-transform: uppercase;
+  color: white; line-height: 1.1; margin-bottom: 20px;
+}
+.about-text { color: rgba(255,255,255,0.86); font-size: 16px; line-height: 1.75; }
+
+/* ── TESTIMONIALS ──────────────────── */
+.testimonials { background: white; padding: 80px 0; }
+.testimonials .section-title { text-align: center; }
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 16px; margin-top: 44px;
+}
+.t-card { background: var(--gray-bg); border-radius: 12px; padding: 18px 14px; }
+.t-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.t-avatar {
+  width: 38px; height: 38px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 800; color: white; flex-shrink: 0;
+}
+.t-name { font-size: 12px; font-weight: 700; color: var(--dark); }
+.t-stars { font-size: 12px; color: var(--yellow); margin-top: 2px; }
+.t-text { font-size: 11.5px; color: var(--text-muted); line-height: 1.6; }
+
+/* ── CTA SECTION ───────────────────── */
+.cta-section { background: var(--yellow); padding: 64px 0; text-align: center; }
+.cta-section .section-title { color: var(--dark); font-size: clamp(20px, 2.5vw, 30px); }
+.cta-section .section-sub { color: rgba(0,0,0,0.6); margin: 10px 0 28px; }
+
+/* ── FAQ ───────────────────────────── */
+.faq { background: white; padding: 80px 0; }
+.faq .section-title { text-align: center; margin-bottom: 40px; }
+.faq-list { max-width: 760px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid #EBEBEB; }
+.faq-btn {
+  width: 100%; background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 0; font-family: 'Montserrat', sans-serif;
+  font-size: 15px; font-weight: 600; color: var(--dark); text-align: left; gap: 16px;
+}
+.faq-icon {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 2px solid var(--red); color: var(--red);
+  display: grid; place-items: center; flex-shrink: 0;
+  font-size: 20px; font-weight: 300; line-height: 1;
+  transition: transform 0.3s, background 0.2s, color 0.2s;
+}
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+  background: var(--red); color: white;
+}
+.faq-answer {
+  font-size: 14px; color: var(--text-muted); line-height: 1.75;
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease, padding-bottom 0.3s;
+}
+.faq-item.open .faq-answer { max-height: 300px; padding-bottom: 18px; }
+
+/* ── FOOTER ────────────────────────── */
+.footer { background: var(--red); padding: 44px 0 28px; text-align: center; }
+.footer-copy { color: rgba(255,255,255,0.5); font-size: 12px; margin-top: 18px; line-height: 1.6; }
+
+/* ── WHATSAPP FLOAT ────────────────── */
+.wa-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  width: 58px; height: 58px; border-radius: 50%;
+  background: #25D366; color: white;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.wa-float:hover { transform: scale(1.12); box-shadow: 0 6px 28px rgba(37,211,102,0.6); }
+.wa-float svg { width: 30px; height: 30px; }
+.wa-tooltip {
+  position: absolute; right: 68px; top: 50%; transform: translateY(-50%);
+  background: var(--dark); color: white;
+  font-size: 12px; font-weight: 600; white-space: nowrap;
+  padding: 6px 12px; border-radius: 6px; pointer-events: none;
+  opacity: 0; transition: opacity 0.2s;
+}
+.wa-float:hover .wa-tooltip { opacity: 1; }
+
+/* ── RESPONSIVE ────────────────────── */
+@media (max-width: 920px) {
+  .benefits-grid { grid-template-columns: 1fr; }
+  .plans-grid { grid-template-columns: 1fr; max-width: 380px; margin-left: auto; margin-right: auto; }
+  .plan-card.featured { transform: none; box-shadow: 0 8px 28px rgba(227,6,19,0.28); }
+  .plan-card.featured:hover { transform: translateY(-5px); }
+  .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-inner, .mid-banner-inner, .about-inner { justify-content: flex-start; }
+  .mid-banner-content, .about-content { max-width: 100%; }
+  .hero::after {
+    background: linear-gradient(to right,
+      var(--red) 0%, var(--red) 60%,
+      rgba(227,6,19,0.5) 80%, transparent 100%
+    );
+  }
+  .mid-banner::after, .about::after {
+    background: rgba(227,6,19,0.82);
+  }
+}
+@media (max-width: 600px) {
+  .nav-menu a:not(.btn-green) { display: none; }
+  .nav-menu { gap: 16px; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .hero-title { font-size: 30px; }
+  .hero-content { padding: 50px 0; }
+  .wa-float { bottom: 20px; right: 20px; width: 52px; height: 52px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────── -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo-link">
+      <span class="logo-text">areal</span>
+      <div class="logo-right">
+        <svg width="34" height="22" viewBox="0 0 34 22" fill="none">
+          <circle cx="4" cy="18" r="4" fill="#F5A623"/>
+          <path d="M1,12 Q4,6 7,12" stroke="#F5A623" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M-3,6 Q4,-2 11,6" stroke="#F5A623" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-net">net</span>
+      </div>
+    </a>
+    <nav class="nav-menu">
+      <a href="#planos">Planos</a>
+      <a href="#contato">Fale Conosco</a>
+      <a href="#planos" class="btn-green">Assinar Já &nbsp;↗</a>
+    </nav>
+  </div>
+</nav>
+
+<!-- ── HERO ─────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content reveal">
+      <h1 class="hero-title">
+        A MELHOR<br>
+        INTERNET<br>
+        AGORA <span class="yellow">ESTÁ<br>
+        PERTINHO DE<br>
+        VOCÊ!</span>
+      </h1>
+      <p class="hero-sub">Estamos atendendo na sua cidade, para melhor comodidade e qualidade.</p>
+      <a href="#planos" class="btn-green btn-green-lg">Quero Assinar Agora &nbsp;↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── BENEFITS ──────────────────────── -->
+<section class="benefits">
+  <div class="container">
+    <h2 class="section-title reveal">BENEFÍCIOS <span class="red">DE VERDADE</span></h2>
+    <p class="section-sub reveal">Para você aproveitar melhor do seu plano!</p>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal reveal-delay-1">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 48 48" fill="none">
+            <circle cx="24" cy="40" r="5" fill="white"/>
+            <path d="M14,31 Q24,20 34,31" stroke="white" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <path d="M5,22 Q24,3 43,22" stroke="white" stroke-width="4" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="benefit-title">100% FIBRA ÓPTICA</h3>
+        <p class="benefit-desc">Internet 100% Fibra Óptica te proporcionando a melhor conexão com ultravelocidade e estabilidade garantida.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-2">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 48 48" fill="none">
+            <path d="M26 4L8 26H23L21 44L40 22H25L26 4Z" fill="white"/>
+          </svg>
+        </div>
+        <h3 class="benefit-title">NAVEGUE SEM LIMITES</h3>
+        <p class="benefit-desc">Sem franquia de dados. Streaming, jogos, home office — use à vontade sem medo de corte de velocidade.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-3">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 48 48" fill="none">
+            <path d="M8 20C8 13.4 13.4 8 20 8H28C34.6 8 40 13.4 40 20V26C40 29.3 37.3 32 34 32H30V36L22 32H14C10.7 32 8 29.3 8 26V20Z" stroke="white" stroke-width="3.5" fill="none"/>
+            <circle cx="18" cy="22" r="2.5" fill="white"/>
+            <circle cx="24" cy="22" r="2.5" fill="white"/>
+            <circle cx="30" cy="22" r="2.5" fill="white"/>
+          </svg>
+        </div>
+        <h3 class="benefit-title">SUPORTE EFICIENTE</h3>
+        <p class="benefit-desc">Equipe técnica disponível 24h para resolver qualquer problema com rapidez e qualidade no atendimento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MID BANNER ────────────────────── -->
+<section class="mid-banner">
+  <div class="mid-banner-inner">
+    <div class="mid-banner-content reveal">
+      <h2 class="mid-banner-title">
+        INTERNET DE ULTRA<br>
+        VELOCIDADE E QUALIDADE<br>
+        <span class="yellow">É A DA AREALNET</span>
+      </h2>
+      <a href="#planos" class="btn-green btn-green-lg">Quero Assinar Agora &nbsp;↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── PLANS ──────────────────────────── -->
+<section class="plans" id="planos">
+  <div class="container">
+    <h2 class="section-title reveal">PLANOS DE INTERNET FIBRA COM O<br><span class="red">MELHOR CUSTO BENEFÍCIO</span></h2>
+    <div class="plans-grid">
+
+      <!-- Smart Fibra -->
+      <div class="plan-card reveal reveal-delay-1">
+        <div class="plan-name">Smart Fibra</div>
+        <div class="plan-speed">400</div>
+        <div class="plan-unit">MEGA</div>
+        <div class="plan-label">Por apenas</div>
+        <div class="plan-price">R$ <strong>119</strong><span style="font-size:14px">/mês</span></div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> 100% Fibra óptica</li>
+          <li><span class="check">✓</span> 100% Velocidade Garantida</li>
+          <li><span class="check">✓</span> IPv4 + IPv6</li>
+          <li><span class="check">✓</span> Wi-Fi 6 (AX)</li>
+          <li><span class="check">✓</span> Instalação Grátis</li>
+          <li><span class="check">✓</span> Suporte Técnico 24h</li>
+        </ul>
+        <a href="https://api.whatsapp.com/send/?phone=555384230842&text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+os+planos%21&type=phone_number&app_absent=0" target="_blank" class="btn-green">Assinar Agora &nbsp;↗</a>
+      </div>
+
+      <!-- Ultra Fibra (destaque) -->
+      <div class="plan-card featured reveal reveal-delay-2">
+        <div class="plan-badge">Mais Vendido</div>
+        <div class="plan-name">Ultra Fibra</div>
+        <div class="plan-speed">600</div>
+        <div class="plan-unit">MEGA</div>
+        <div class="plan-label">Por apenas</div>
+        <div class="plan-price">R$ <strong>129</strong><span style="font-size:14px">/mês</span></div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> 100% Fibra óptica</li>
+          <li><span class="check">✓</span> 100% Velocidade Garantida</li>
+          <li><span class="check">✓</span> IPv4 + IPv6</li>
+          <li><span class="check">✓</span> Wi-Fi 6 (AX)</li>
+          <li><span class="check">✓</span> Instalação Grátis</li>
+          <li><span class="check">✓</span> Suporte Técnico 24h</li>
+        </ul>
+        <a href="https://api.whatsapp.com/send/?phone=555384230842&text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+os+planos%21&type=phone_number&app_absent=0" target="_blank" class="btn-green">Assinar Agora &nbsp;↗</a>
+      </div>
+
+      <!-- Infinity Fibra -->
+      <div class="plan-card reveal reveal-delay-3">
+        <div class="plan-premium-badge">Premium</div>
+        <div class="plan-name">Infinity Fibra</div>
+        <div class="plan-speed" style="font-size:64px">1000</div>
+        <div class="plan-unit">MEGA</div>
+        <div class="plan-label">Por apenas</div>
+        <div class="plan-price">R$ <strong>199</strong><span style="font-size:14px">/mês</span></div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> 100% Fibra óptica</li>
+          <li><span class="check">✓</span> 100% Velocidade Garantida</li>
+          <li><span class="check">✓</span> IPv4 + IPv6</li>
+          <li><span class="check">✓</span> Wi-Fi 6 (AX)</li>
+          <li><span class="check">✓</span> Instalação Grátis</li>
+          <li><span class="check">✓</span> Suporte Técnico 24h</li>
+        </ul>
+        <a href="https://api.whatsapp.com/send/?phone=555384230842&text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+os+planos%21&type=phone_number&app_absent=0" target="_blank" class="btn-green">Assinar Agora &nbsp;↗</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ───────────────────────────── -->
+<section class="about">
+  <div class="about-inner">
+    <div class="about-content reveal">
+      <h2 class="about-title">CONHEÇA A<br><span class="yellow">AREALNET!</span></h2>
+      <p class="about-text">Atuamos há bastante tempo como provedor de internet, fornecendo a melhor conectividade aos nossos clientes, visando um preço justo somado a um excelente serviço. Nossa missão é levar internet de qualidade até você com rapidez, estabilidade e suporte sempre disponível.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ────────────────────── -->
+<section class="testimonials">
+  <div class="container">
+    <h2 class="section-title reveal">QUEM TEM AREALNET<br>E <span class="red">RECOMENDA</span></h2>
+    <div class="testimonials-grid">
+      <div class="t-card reveal reveal-delay-1">
+        <div class="t-header">
+          <div class="t-avatar" style="background:#3B82F6">AP</div>
+          <div>
+            <div class="t-name">Ana Paula</div>
+            <div class="t-stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="t-text">A internet é muito boa, nunca cai e a velocidade é exatamente o que contratei. Recomendo muito!</p>
+      </div>
+      <div class="t-card reveal reveal-delay-1">
+        <div class="t-header">
+          <div class="t-avatar" style="background:#22C55E">CS</div>
+          <div>
+            <div class="t-name">Carlos Silva</div>
+            <div class="t-stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="t-text">Atendimento rápido e instalação no mesmo dia. Qualidade de fibra óptica de verdade, estou muito satisfeito.</p>
+      </div>
+      <div class="t-card reveal reveal-delay-2">
+        <div class="t-header">
+          <div class="t-avatar" style="background:#A855F7">FL</div>
+          <div>
+            <div class="t-name">Fernanda Lima</div>
+            <div class="t-stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="t-text">Trabalho de home office e nunca tive problemas. A conexão é estável e o suporte resolve tudo rapidinho.</p>
+      </div>
+      <div class="t-card reveal reveal-delay-2">
+        <div class="t-header">
+          <div class="t-avatar" style="background:#F97316">RS</div>
+          <div>
+            <div class="t-name">Ricardo Souza</div>
+            <div class="t-stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="t-text">Melhor investimento! Preço justo, internet rápida e equipe super atenciosa. Indico pra todo mundo.</p>
+      </div>
+      <div class="t-card reveal reveal-delay-3">
+        <div class="t-header">
+          <div class="t-avatar" style="background:#EC4899">JC</div>
+          <div>
+            <div class="t-name">Juliana Costa</div>
+            <div class="t-stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="t-text">Desde que assinou a Arealnet minha casa toda tem sinal forte. Vale cada centavo do plano!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA CONTATO ─────────────────────── -->
+<section class="cta-section" id="contato">
+  <div class="container reveal">
+    <h2 class="section-title">QUER SABER MAIS? FALE CONOSCO</h2>
+    <p class="section-sub">Fale com um de nossos atendentes!</p>
+    <a href="https://api.whatsapp.com/send/?phone=555384230842&text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+os+planos%21&type=phone_number&app_absent=0" target="_blank" class="btn-green btn-green-lg" style="margin-top:28px">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Entrar em Contato
+    </a>
+  </div>
+</section>
+
+<!-- ── FAQ ────────────────────────────── -->
+<section class="faq">
+  <div class="container">
+    <h2 class="section-title reveal">PERGUNTAS <span class="red">FREQUENTES</span></h2>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <button class="faq-btn">Como funciona a instalação da internet?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">Após a contratação, nossa equipe agenda a instalação no melhor horário para você. O processo é rápido, organizado e tudo funcionará no mesmo dia.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn">A internet cai em dias de chuva?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">Nossa infraestrutura de fibra óptica é robusta e projetada para funcionar em qualquer condição climática. A fibra não sofre interferência de chuva ou variações de temperatura.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn">O Wi-Fi pega na casa toda?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">O roteador fornecido possui tecnologia Wi-Fi 6 (AX), que garante maior alcance e estabilidade. Para casas maiores, nossos técnicos podem orientar sobre extensores adicionais.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn">Tem fidelidade nos planos?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">Entre em contato com nossa equipe pelo WhatsApp para conhecer as condições atuais. Trabalhamos sempre para oferecer as melhores condições aos nossos clientes.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ──────────────────────────── -->
+<footer class="footer">
+  <a href="/" class="logo-link logo-white" style="display:inline-flex;">
+    <span class="logo-text">areal</span>
+    <div class="logo-right">
+      <svg width="34" height="22" viewBox="0 0 34 22" fill="none">
+        <circle cx="4" cy="18" r="4" fill="#F5A623"/>
+        <path d="M1,12 Q4,6 7,12" stroke="#F5A623" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M-3,6 Q4,-2 11,6" stroke="#F5A623" stroke-width="3" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-net">net</span>
+    </div>
+  </a>
+  <p class="footer-copy">© 2025 Arealnet. Todos os direitos reservados.</p>
+</footer>
+
+<!-- ── WHATSAPP FLUTUANTE ──────────────── -->
+<a href="https://api.whatsapp.com/send/?phone=555384230842&text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+os+planos%21&type=phone_number&app_absent=0" target="_blank" class="wa-float" aria-label="Fale pelo WhatsApp">
+  <span class="wa-tooltip">Fale conosco!</span>
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Scroll reveal — only activate after page is ready
+  document.documentElement.classList.add('js-ready');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
