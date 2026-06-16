@@ -67,11 +67,10 @@ a { text-decoration: none; color: inherit; }
 }
 .logo-net {
   font-family: 'Nunito', 'Montserrat', sans-serif;
-  font-weight: 800; font-size: 12px; color: var(--red);
+  font-weight: 800; font-size: 12px; color: var(--yellow);
   letter-spacing: 0.02em; line-height: 1.1;
 }
 .logo-white .logo-text { color: white; }
-.logo-white .logo-net { color: white; }
 
 /* ── REVEAL ANIMATIONS ─────────── */
 .js-ready .reveal {
@@ -86,12 +85,14 @@ a { text-decoration: none; color: inherit; }
 /* ── NAV ─────────────────────────── */
 .nav {
   position: sticky; top: 0; z-index: 200;
-  background: white; box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+  background: white; box-shadow: 0 2px 16px rgba(0,0,0,0.1);
+  overflow: visible;
 }
+.nav a:first-child { position: relative; z-index: 201; }
 .nav-inner {
   max-width: var(--maxw); margin: 0 auto; padding: 0 28px;
   display: flex; align-items: center; justify-content: space-between;
-  height: 70px;
+  height: 84px;
 }
 .nav-menu { display: flex; align-items: center; gap: 36px; }
 .nav-menu a { font-size: 14px; font-weight: 600; color: var(--dark); transition: color 0.2s; }
@@ -172,104 +173,179 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ── PLANS ─────────────────────────── */
-.plans { background: var(--gray-bg); padding: 80px 0; }
-.plans .section-title { text-align: center; }
+.plans { background: var(--gray-bg); padding: 90px 0; }
+.plans .section-title { text-align: center; color: var(--dark); }
+.plans-sub {
+  text-align: center; margin-top: 12px;
+  color: var(--text-muted); font-size: 13px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
 .plans-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 22px; margin-top: 50px; align-items: start;
+  gap: 24px; margin-top: 50px; align-items: center;
 }
 .plan-card {
-  background: white; border-radius: 18px;
-  border: 2px solid #E8E8E8; padding: 32px 26px 28px;
+  background: white; border-radius: 20px;
+  border: 2px solid #EBEBEB;
+  padding: 32px 26px 28px;
   text-align: center; display: flex; flex-direction: column;
   position: relative; overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
-.plan-card:hover { transform: translateY(-5px); box-shadow: 0 16px 44px rgba(0,0,0,0.13); }
+.plan-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: var(--red);
+}
+.plan-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(227,6,19,0.2);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.1);
+}
 .plan-card.featured {
   background: var(--red); border-color: var(--red);
-  transform: scale(1.05);
-  box-shadow: 0 16px 44px rgba(227,6,19,0.32);
+  transform: scale(1.06);
+  box-shadow: 0 32px 72px rgba(227,6,19,0.45);
 }
-.plan-card.featured:hover { transform: scale(1.05) translateY(-5px); }
+.plan-card.featured::before { background: rgba(255,255,255,0.3); }
+.plan-card.featured:hover { transform: scale(1.06) translateY(-6px); }
 .plan-badge {
   position: absolute; top: 0; left: 50%; transform: translateX(-50%);
   background: var(--yellow); color: var(--dark);
   font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
-  padding: 6px 22px; border-radius: 0 0 12px 12px;
+  padding: 7px 28px; border-radius: 0 0 14px 14px;
+  box-shadow: 0 4px 12px rgba(245,166,35,0.45);
 }
 .plan-premium-badge {
   position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-  background: #111; color: white;
+  background: #EBEBEB; color: #888;
   font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
   padding: 6px 22px; border-radius: 0 0 12px 12px;
 }
 .plan-name {
-  font-size: 13px; font-weight: 800; text-transform: uppercase;
-  letter-spacing: 0.06em; color: var(--red); margin-top: 28px; margin-bottom: 4px;
+  font-size: 12px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--text-muted); margin-top: 28px; margin-bottom: 4px;
 }
-.plan-card.featured .plan-name { color: var(--yellow); }
+.plan-card.featured .plan-name { color: rgba(255,255,255,0.8); }
 .plan-card:not(.featured) .plan-name { margin-top: 14px; }
 .plan-speed {
   font-size: 82px; font-weight: 900; line-height: 1; color: var(--red); letter-spacing: -3px;
 }
 .plan-card.featured .plan-speed { color: white; }
 .plan-unit {
-  font-size: 14px; font-weight: 700; color: #999; margin-bottom: 10px; text-transform: uppercase;
+  font-size: 13px; font-weight: 700; color: var(--text-muted);
+  margin-bottom: 18px; text-transform: uppercase; letter-spacing: 0.06em;
 }
 .plan-card.featured .plan-unit { color: rgba(255,255,255,0.7); }
+.plan-divider {
+  width: 36px; height: 3px; border-radius: 2px; margin: 0 auto 18px;
+  background: var(--red); opacity: 0.25;
+}
+.plan-card.featured .plan-divider { background: white; opacity: 0.35; }
 .plan-label {
   font-size: 10px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 2px;
+  letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 4px;
 }
 .plan-card.featured .plan-label { color: rgba(255,255,255,0.65); }
 .plan-price {
-  font-size: 14px; font-weight: 800; color: var(--dark); margin-bottom: 4px; line-height: 1.1;
+  font-size: 14px; font-weight: 800; color: var(--dark); margin-bottom: 2px; line-height: 1.1;
 }
-.plan-price strong { font-size: 34px; }
+.plan-price strong { font-size: 42px; }
 .plan-card.featured .plan-price { color: white; }
-.plan-period { font-size: 11px; color: #aaa; margin-bottom: 22px; }
+.plan-period { font-size: 11px; color: var(--text-muted); margin-bottom: 24px; }
 .plan-card.featured .plan-period { color: rgba(255,255,255,0.6); }
-.plan-features { list-style: none; text-align: left; margin-bottom: 24px; flex: 1; }
+.plan-features { list-style: none; text-align: left; margin-bottom: 26px; flex: 1; }
 .plan-features li {
   font-size: 13px; padding: 9px 0; color: var(--text-muted);
-  border-bottom: 1px solid rgba(0,0,0,0.07);
+  border-bottom: 1px solid #F0F0F0;
   display: flex; align-items: center; gap: 8px;
 }
 .plan-features li:last-child { border-bottom: none; }
 .plan-card.featured .plan-features li {
-  color: rgba(255,255,255,0.88); border-bottom-color: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9); border-bottom-color: rgba(255,255,255,0.15);
 }
-.check { color: var(--green); font-weight: 800; font-size: 14px; }
+.check { color: var(--red); font-weight: 800; font-size: 15px; }
 .plan-card.featured .check { color: var(--yellow); }
+.plans-guarantee {
+  display: flex; align-items: center; justify-content: center; gap: 36px;
+  margin-top: 48px; flex-wrap: wrap;
+}
+.plans-guarantee-item {
+  display: flex; align-items: center; gap: 9px;
+  color: var(--text-muted); font-size: 13px; font-weight: 600;
+}
+
+/* ── STATS ─────────────────────────── */
+.stats { background: white; padding: 60px 0; border-top: 1px solid #EBEBEB; border-bottom: 1px solid #EBEBEB; }
+.stats-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0; text-align: center;
+}
+.stat-item {
+  padding: 16px 24px;
+  border-right: 1px solid #EBEBEB;
+}
+.stat-item:last-child { border-right: none; }
+.stat-number {
+  font-size: clamp(40px, 5vw, 66px); font-weight: 900;
+  color: var(--red); line-height: 1;
+}
+.stat-suffix { font-size: clamp(22px, 2.5vw, 36px); }
+.stat-label {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--text-muted); margin-top: 10px;
+}
+
+/* ── COMO FUNCIONA ─────────────────── */
+.howto { background: var(--gray-bg); padding: 80px 0; }
+.howto .section-title { text-align: center; }
+.howto .section-sub { text-align: center; margin-top: 8px; }
+.howto-steps {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0; margin-top: 50px; position: relative;
+}
+.howto-steps::before {
+  content: ''; position: absolute; top: 30px; left: calc(16.6% + 16px); right: calc(16.6% + 16px);
+  height: 2px; background: linear-gradient(to right, var(--red), var(--red));
+  opacity: 0.2;
+}
+.howto-step { text-align: center; padding: 0 24px; }
+.howto-num {
+  width: 60px; height: 60px; border-radius: 50%;
+  background: var(--red); color: white;
+  font-size: 22px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 22px; box-shadow: 0 8px 24px rgba(227,6,19,0.35);
+}
+.howto-title {
+  font-size: 15px; font-weight: 800; text-transform: uppercase;
+  color: var(--dark); margin-bottom: 12px; line-height: 1.3;
+}
+.howto-text { font-size: 13.5px; color: var(--text-muted); line-height: 1.7; }
 
 /* ── ABOUT ─────────────────────────── */
 .about {
-  background: var(--red) url('banner-mid.png') 30% center/cover no-repeat;
-  min-height: 440px; position: relative; overflow: hidden;
+  background: var(--red);
+  display: flex; min-height: 440px; overflow: hidden;
 }
-.about::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to right,
-    transparent 18%,
-    rgba(227,6,19,0.2) 34%,
-    rgba(227,6,19,0.88) 52%,
-    var(--red) 66%,
-    var(--red) 100%
-  );
+.about-img {
+  flex: 0 0 50%; max-width: 50%;
+  object-fit: cover; display: block;
 }
 .about-inner {
-  max-width: var(--maxw); margin: 0 auto; padding: 0 28px;
-  min-height: 440px; display: flex; align-items: center; justify-content: flex-end;
-  position: relative; z-index: 1;
+  flex: 1; display: flex; align-items: center;
+  padding: 60px 60px 60px 48px;
 }
-.about-content { max-width: 500px; padding: 60px 0; }
+.about-content { max-width: 480px; }
+.about-label {
+  font-size: 11px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.18em; color: var(--yellow); margin-bottom: 10px;
+}
 .about-title {
-  font-size: clamp(26px, 3.5vw, 46px);
+  font-size: clamp(20px, 2.6vw, 34px);
   font-weight: 900; text-transform: uppercase;
-  color: white; line-height: 1.1; margin-bottom: 20px;
+  color: white; line-height: 1.15; margin-bottom: 16px;
 }
-.about-text { color: rgba(255,255,255,0.86); font-size: 16px; line-height: 1.75; }
+.about-text { color: rgba(255,255,255,0.82); font-size: 14px; line-height: 1.8; }
 
 /* ── TESTIMONIALS ──────────────────── */
 .testimonials { background: white; padding: 80px 0; }
@@ -281,9 +357,9 @@ a { text-decoration: none; color: inherit; }
 .t-card { background: var(--gray-bg); border-radius: 12px; padding: 18px 14px; }
 .t-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
 .t-avatar {
-  width: 46px; height: 46px; border-radius: 50%;
-  object-fit: cover; flex-shrink: 0; display: block;
-  border: 2px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  width: 38px; height: 38px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 800; color: white; flex-shrink: 0;
 }
 .t-name { font-size: 12px; font-weight: 700; color: var(--dark); }
 .t-stars { font-size: 12px; color: var(--yellow); margin-top: 2px; }
@@ -326,6 +402,9 @@ a { text-decoration: none; color: inherit; }
 /* ── FOOTER ────────────────────────── */
 .footer { background: var(--red); padding: 44px 0 28px; text-align: center; }
 .footer-copy { color: rgba(255,255,255,0.5); font-size: 12px; margin-top: 18px; line-height: 1.6; }
+.logo-white .logo-net { color: white; }
+.logo-white svg circle { fill: white; }
+.logo-white svg path { stroke: white; }
 
 /* ── WHATSAPP FLOAT ────────────────── */
 .wa-float {
@@ -351,8 +430,9 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 920px) {
   .benefits-grid { grid-template-columns: 1fr; }
   .plans-grid { grid-template-columns: 1fr; max-width: 380px; margin-left: auto; margin-right: auto; }
-  .plan-card.featured { transform: none; box-shadow: 0 8px 28px rgba(227,6,19,0.28); }
-  .plan-card.featured:hover { transform: translateY(-5px); }
+  .plan-card.featured { transform: none; box-shadow: 0 12px 40px rgba(227,6,19,0.4); }
+  .plan-card.featured:hover { transform: translateY(-6px); }
+  .plans-guarantee { gap: 20px; }
   .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
   .hero-inner, .mid-banner-inner, .about-inner { justify-content: flex-start; }
   .mid-banner-content, .about-content { max-width: 100%; }
@@ -362,9 +442,13 @@ a { text-decoration: none; color: inherit; }
       rgba(227,6,19,0.5) 80%, transparent 100%
     );
   }
-  .mid-banner::after, .about::after {
-    background: rgba(227,6,19,0.82);
-  }
+  .mid-banner::after { background: rgba(227,6,19,0.82); }
+  .about { flex-direction: column; }
+  .about-img { flex: none; max-width: 100%; width: 100%; height: 260px; }
+  .about-inner { padding: 40px 28px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .howto-steps { grid-template-columns: 1fr; gap: 32px; }
+  .howto-steps::before { display: none; }
 }
 @media (max-width: 600px) {
   .nav-menu a:not(.btn-green) { display: none; }
@@ -373,6 +457,7 @@ a { text-decoration: none; color: inherit; }
   .hero-title { font-size: 30px; }
   .hero-content { padding: 50px 0; }
   .wa-float { bottom: 20px; right: 20px; width: 52px; height: 52px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
 </head>
@@ -381,21 +466,13 @@ a { text-decoration: none; color: inherit; }
 <!-- ── NAV ──────────────────────────── -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="/" class="logo-link">
-      <span class="logo-text">areal</span>
-      <div class="logo-right">
-        <svg width="36" height="32" viewBox="0 0 40 36" fill="none">
-          <circle cx="4" cy="32" r="4" fill="#F5A623"/>
-          <path d="M4,21 A11,11 0 0,1 15,32" stroke="#F5A623" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-          <path d="M4,8 A24,24 0 0,1 28,32" stroke="#F5A623" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-        </svg>
-        <span class="logo-net">net</span>
-      </div>
+    <a href="/" style="display:inline-flex; line-height:0;">
+      <img src="logo.png" id="logo-nav" style="height:98px; display:block;">
     </a>
     <nav class="nav-menu">
       <a href="#planos">Planos</a>
       <a href="#contato">Fale Conosco</a>
-      <a href="#planos" class="btn-green">Assinar Já &nbsp;↗</a>
+      <a href="#planos" class="btn-green">Assinar Já</a>
     </nav>
   </div>
 </nav>
@@ -412,7 +489,7 @@ a { text-decoration: none; color: inherit; }
         VOCÊ!</span>
       </h1>
       <p class="hero-sub">Estamos atendendo na sua cidade, para melhor comodidade e qualidade.</p>
-      <a href="#planos" class="btn-green btn-green-lg">Quero Assinar Agora &nbsp;↗</a>
+      <a href="#planos" class="btn-green btn-green-lg">Quero Assinar Agora</a>
     </div>
   </div>
 </section>
@@ -459,6 +536,26 @@ a { text-decoration: none; color: inherit; }
   </div>
 </section>
 
+<!-- ── STATS ──────────────────────────── -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-number">15<span class="stat-suffix">+</span></div>
+        <div class="stat-label">Anos de Experiência</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-number">99<span class="stat-suffix">%</span></div>
+        <div class="stat-label">Uptime Garantido</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="stat-number">24<span class="stat-suffix">h</span></div>
+        <div class="stat-label">Suporte Disponível</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── MID BANNER ────────────────────── -->
 <section class="mid-banner">
   <div class="mid-banner-inner">
@@ -468,7 +565,32 @@ a { text-decoration: none; color: inherit; }
         VELOCIDADE E QUALIDADE<br>
         <span class="yellow">É A DA AREALNET</span>
       </h2>
-      <a href="#planos" class="btn-green btn-green-lg">Quero Assinar Agora &nbsp;↗</a>
+      <a href="#planos" class="btn-green btn-green-lg">Quero Assinar Agora</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMO FUNCIONA ──────────────────── -->
+<section class="howto">
+  <div class="container">
+    <h2 class="section-title reveal">COMO <span class="red">FUNCIONA?</span></h2>
+    <p class="section-sub reveal">Três passos simples para ter a melhor internet na sua casa</p>
+    <div class="howto-steps">
+      <div class="howto-step reveal reveal-delay-1">
+        <div class="howto-num">1</div>
+        <h3 class="howto-title">Escolha seu Plano</h3>
+        <p class="howto-text">Selecione o plano ideal para sua casa ou empresa. Temos opções para todos os perfis e necessidades.</p>
+      </div>
+      <div class="howto-step reveal reveal-delay-2">
+        <div class="howto-num">2</div>
+        <h3 class="howto-title">Agendamos a Instalação</h3>
+        <p class="howto-text">Nossa equipe técnica entra em contato para agendar a instalação no melhor horário para você.</p>
+      </div>
+      <div class="howto-step reveal reveal-delay-3">
+        <div class="howto-num">3</div>
+        <h3 class="howto-title">Internet Funcionando!</h3>
+        <p class="howto-text">Instalação rápida e organizada. No mesmo dia você já está conectado com velocidade e estabilidade garantidas.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -477,6 +599,7 @@ a { text-decoration: none; color: inherit; }
 <section class="plans" id="planos">
   <div class="container">
     <h2 class="section-title reveal">PLANOS DE INTERNET FIBRA COM O<br><span class="red">MELHOR CUSTO BENEFÍCIO</span></h2>
+    <p class="plans-sub reveal">Instalação grátis · Sem franquia · Fibra 100%</p>
     <div class="plans-grid">
 
       <!-- Smart Fibra -->
@@ -484,6 +607,7 @@ a { text-decoration: none; color: inherit; }
         <div class="plan-name">Smart Fibra</div>
         <div class="plan-speed">400</div>
         <div class="plan-unit">MEGA</div>
+        <div class="plan-divider"></div>
         <div class="plan-label">Por apenas</div>
         <div class="plan-price">R$ <strong>119</strong><span style="font-size:14px">/mês</span></div>
         <ul class="plan-features">
@@ -494,7 +618,7 @@ a { text-decoration: none; color: inherit; }
           <li><span class="check">✓</span> Instalação Grátis</li>
           <li><span class="check">✓</span> Suporte Técnico 24h</li>
         </ul>
-        <a href="https://api.whatsapp.com/send/?phone=555384230842&text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+os+planos%21&type=phone_number&app_absent=0" target="_blank" class="btn-green">Assinar Agora &nbsp;↗</a>
+        <a href="https://api.whatsapp.com/send/?phone=555384230842&text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+os+planos%21&type=phone_number&app_absent=0" target="_blank" class="btn-green">Assinar Agora</a>
       </div>
 
       <!-- Ultra Fibra (destaque) -->
@@ -503,6 +627,7 @@ a { text-decoration: none; color: inherit; }
         <div class="plan-name">Ultra Fibra</div>
         <div class="plan-speed">600</div>
         <div class="plan-unit">MEGA</div>
+        <div class="plan-divider"></div>
         <div class="plan-label">Por apenas</div>
         <div class="plan-price">R$ <strong>129</strong><span style="font-size:14px">/mês</span></div>
         <ul class="plan-features">
@@ -513,7 +638,7 @@ a { text-decoration: none; color: inherit; }
           <li><span class="check">✓</span> Instalação Grátis</li>
           <li><span class="check">✓</span> Suporte Técnico 24h</li>
         </ul>
-        <a href="https://api.whatsapp.com/send/?phone=555384230842&text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+os+planos%21&type=phone_number&app_absent=0" target="_blank" class="btn-green">Assinar Agora &nbsp;↗</a>
+        <a href="https://api.whatsapp.com/send/?phone=555384230842&text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+os+planos%21&type=phone_number&app_absent=0" target="_blank" class="btn-green">Assinar Agora</a>
       </div>
 
       <!-- Infinity Fibra -->
@@ -522,6 +647,7 @@ a { text-decoration: none; color: inherit; }
         <div class="plan-name">Infinity Fibra</div>
         <div class="plan-speed" style="font-size:64px">1000</div>
         <div class="plan-unit">MEGA</div>
+        <div class="plan-divider"></div>
         <div class="plan-label">Por apenas</div>
         <div class="plan-price">R$ <strong>199</strong><span style="font-size:14px">/mês</span></div>
         <ul class="plan-features">
@@ -532,19 +658,35 @@ a { text-decoration: none; color: inherit; }
           <li><span class="check">✓</span> Instalação Grátis</li>
           <li><span class="check">✓</span> Suporte Técnico 24h</li>
         </ul>
-        <a href="https://api.whatsapp.com/send/?phone=555384230842&text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+os+planos%21&type=phone_number&app_absent=0" target="_blank" class="btn-green">Assinar Agora &nbsp;↗</a>
+        <a href="https://api.whatsapp.com/send/?phone=555384230842&text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+os+planos%21&type=phone_number&app_absent=0" target="_blank" class="btn-green">Assinar Agora</a>
       </div>
 
+    </div>
+    <div class="plans-guarantee reveal">
+      <div class="plans-guarantee-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Instalação grátis
+      </div>
+      <div class="plans-guarantee-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Sem fidelidade obrigatória
+      </div>
+      <div class="plans-guarantee-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Suporte 24h
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ── ABOUT ───────────────────────────── -->
 <section class="about">
+  <img src="banner2.png" class="about-img" alt="Atendente Arealnet">
   <div class="about-inner">
     <div class="about-content reveal">
+      <div class="about-label">Quem somos</div>
       <h2 class="about-title">CONHEÇA A<br><span class="yellow">AREALNET!</span></h2>
-      <p class="about-text">Atuamos há bastante tempo como provedor de internet, fornecendo a melhor conectividade aos nossos clientes, visando um preço justo somado a um excelente serviço. Nossa missão é levar internet de qualidade até você com rapidez, estabilidade e suporte sempre disponível.</p>
+      <p class="about-text">Atuamos há mais de 15 anos como provedor de internet, levando conectividade de qualidade com preço justo e suporte sempre disponível. Nossa missão é ser o provedor mais próximo e confiável da sua região.</p>
     </div>
   </div>
 </section>
@@ -556,7 +698,7 @@ a { text-decoration: none; color: inherit; }
     <div class="testimonials-grid">
       <div class="t-card reveal reveal-delay-1">
         <div class="t-header">
-          <img class="t-avatar" src="https://i.pravatar.cc/80?img=47" alt="Ana Paula">
+          <div class="t-avatar" style="background:#3B82F6">AP</div>
           <div>
             <div class="t-name">Ana Paula</div>
             <div class="t-stars">★★★★★</div>
@@ -566,7 +708,7 @@ a { text-decoration: none; color: inherit; }
       </div>
       <div class="t-card reveal reveal-delay-1">
         <div class="t-header">
-          <img class="t-avatar" src="https://i.pravatar.cc/80?img=33" alt="Carlos Silva">
+          <div class="t-avatar" style="background:#22C55E">CS</div>
           <div>
             <div class="t-name">Carlos Silva</div>
             <div class="t-stars">★★★★★</div>
@@ -576,7 +718,7 @@ a { text-decoration: none; color: inherit; }
       </div>
       <div class="t-card reveal reveal-delay-2">
         <div class="t-header">
-          <img class="t-avatar" src="https://i.pravatar.cc/80?img=25" alt="Fernanda Lima">
+          <div class="t-avatar" style="background:#A855F7">FL</div>
           <div>
             <div class="t-name">Fernanda Lima</div>
             <div class="t-stars">★★★★★</div>
@@ -586,7 +728,7 @@ a { text-decoration: none; color: inherit; }
       </div>
       <div class="t-card reveal reveal-delay-2">
         <div class="t-header">
-          <img class="t-avatar" src="https://i.pravatar.cc/80?img=56" alt="Ricardo Souza">
+          <div class="t-avatar" style="background:#F97316">RS</div>
           <div>
             <div class="t-name">Ricardo Souza</div>
             <div class="t-stars">★★★★★</div>
@@ -596,7 +738,7 @@ a { text-decoration: none; color: inherit; }
       </div>
       <div class="t-card reveal reveal-delay-3">
         <div class="t-header">
-          <img class="t-avatar" src="https://i.pravatar.cc/80?img=49" alt="Juliana Costa">
+          <div class="t-avatar" style="background:#EC4899">JC</div>
           <div>
             <div class="t-name">Juliana Costa</div>
             <div class="t-stars">★★★★★</div>
@@ -647,18 +789,10 @@ a { text-decoration: none; color: inherit; }
 
 <!-- ── FOOTER ──────────────────────────── -->
 <footer class="footer">
-  <a href="/" class="logo-link logo-white" style="display:inline-flex;">
-    <span class="logo-text">areal</span>
-    <div class="logo-right">
-      <svg width="34" height="22" viewBox="0 0 34 22" fill="none">
-        <circle cx="4" cy="18" r="4" fill="#F5A623"/>
-        <path d="M1,12 Q4,6 7,12" stroke="#F5A623" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <path d="M-3,6 Q4,-2 11,6" stroke="#F5A623" stroke-width="3" fill="none" stroke-linecap="round"/>
-      </svg>
-      <span class="logo-net">net</span>
-    </div>
+  <a href="/" style="display:inline-block; line-height:0;">
+    <img src="logo.png" class="logo-img" style="height:90px; display:block;">
   </a>
-  <p class="footer-copy">© 2025 Arealnet. Todos os direitos reservados.</p>
+  <p class="footer-copy">© 2026 Arealnet. Todos os direitos reservados.</p>
 </footer>
 
 <!-- ── WHATSAPP FLUTUANTE ──────────────── -->
@@ -668,6 +802,55 @@ a { text-decoration: none; color: inherit; }
 </a>
 
 <script>
+  // Remove red background from logo images
+  function removeBg(img) {
+    const run = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      const d = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const px = d.data;
+      for (let i = 0; i < px.length; i += 4) {
+        if (px[i] > 140 && px[i+1] < 110 && px[i+2] < 110) px[i+3] = 0;
+      }
+      ctx.putImageData(d, 0, 0);
+      img.src = canvas.toDataURL('image/png');
+    };
+    img.complete ? run() : (img.onload = run);
+  }
+  document.querySelectorAll('.logo-img').forEach(removeBg);
+
+  const navLogo = document.getElementById('logo-nav');
+  if (navLogo) {
+    const processNavLogo = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = navLogo.naturalWidth;
+      canvas.height = navLogo.naturalHeight;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(navLogo, 0, 0);
+      const d = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const px = d.data;
+      for (let i = 0; i < px.length; i += 4) {
+        const r = px[i], g = px[i+1], b = px[i+2];
+        if (r > 200 && g > 140 && b < 50) {
+          // wifi amarelo — mantém
+          px[i] = 255; px[i+1] = 202; px[i+2] = 0;
+        } else if (r > 210 && g > 210 && b > 210) {
+          // texto branco → vira vermelho Arealnet
+          px[i] = 227; px[i+1] = 6; px[i+2] = 19;
+        } else {
+          // fundo vermelho + antialiasing → transparente
+          px[i+3] = 0;
+        }
+      }
+      ctx.putImageData(d, 0, 0);
+      navLogo.src = canvas.toDataURL('image/png');
+    };
+    navLogo.complete ? processNavLogo() : (navLogo.onload = processNavLogo);
+  }
+
   // FAQ accordion
   document.querySelectorAll('.faq-btn').forEach(btn => {
     btn.addEventListener('click', () => {
