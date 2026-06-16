@@ -450,79 +450,113 @@ a { text-decoration: none; color: inherit; }
   .nav-menu a:not(.btn-green) { display: none; }
   .nav-menu { gap: 12px; }
   .btn-green { font-size: 12px; padding: 11px 20px; }
-  .btn-green-lg { font-size: 13px; padding: 14px 28px; }
+  .btn-green-lg { font-size: 14px; padding: 14px 28px; }
 
-  /* Hero */
-  .hero { min-height: 460px; }
-  .hero::after { background: linear-gradient(to right, var(--navy-dark) 0%, var(--navy-dark) 65%, rgba(0,26,61,0.5) 85%, transparent 100%); }
-  .hero-content { padding: 44px 0 36px; max-width: 100%; }
-  .hero-tag { font-size: 10px; padding: 5px 12px; margin-bottom: 14px; }
-  .hero-title { font-size: 26px; margin-bottom: 12px; }
-  .hero-sub { font-size: 14px; margin-bottom: 22px; }
+  /* Hero — fundo cobre a imagem, texto centralizado */
+  .hero { min-height: 520px; background-position: 72% center; }
+  .hero::after { background: linear-gradient(to bottom, rgba(0,26,61,0.55) 0%, rgba(0,26,61,0.85) 60%, var(--navy-dark) 100%); }
+  .hero-inner { align-items: flex-end; padding-bottom: 0; }
+  .hero-content { padding: 0 0 40px; text-align: center; max-width: 100%; }
+  .hero-tag { font-size: 10px; padding: 5px 12px; margin-bottom: 12px; display: inline-flex; }
+  .hero-title { font-size: 28px; margin-bottom: 10px; }
+  .hero-sub { font-size: 13px; margin-bottom: 20px; max-width: 100%; }
   .hero-badges { display: none; }
+  .hero-content .btn-green { display: inline-flex; }
 
-  /* Benefits */
-  .benefits { padding: 50px 0; }
-  .benefits-grid { gap: 14px; margin-top: 26px; }
-  .benefit-card { padding: 22px 18px; border-radius: 12px; }
-  .benefit-icon svg { width: 38px; height: 38px; }
-  .benefit-title { font-size: 13px; margin-bottom: 8px; }
-  .benefit-desc { font-size: 12.5px; }
+  /* Cidades strip */
+  .streaming-inner { flex-direction: row !important; align-items: center !important; }
+
+  /* Benefits — cards lado a lado com ícone + texto */
+  .benefits { padding: 40px 0; }
+  .benefits .section-title { font-size: 20px; }
+  .benefits-grid { gap: 12px; margin-top: 22px; }
+  .benefit-card {
+    padding: 18px 16px; border-radius: 12px;
+    flex-direction: row; align-items: flex-start; gap: 14px; display: flex;
+  }
+  .benefit-icon { margin-bottom: 0; flex-shrink: 0; }
+  .benefit-icon svg { width: 32px; height: 32px; }
+  .benefit-title { font-size: 12px; margin-bottom: 6px; }
+  .benefit-desc { font-size: 12px; }
 
   /* Mid banner */
-  .mid-banner { min-height: 300px; }
-  .mid-banner::after { background: rgba(0,26,61,0.82); }
-  .mid-banner-inner { justify-content: flex-start; }
-  .mid-banner-content { padding: 36px 0; max-width: 100%; }
-  .mid-banner-title { font-size: 20px; margin-bottom: 20px; }
+  .mid-banner { min-height: 280px; background-position: center center; }
+  .mid-banner::after { background: rgba(0,26,61,0.85); }
+  .mid-banner-inner { justify-content: center; text-align: center; }
+  .mid-banner-content { padding: 32px 0; }
+  .mid-banner-title { font-size: 20px; margin-bottom: 18px; }
 
-  /* Streaming */
-  .streaming-strip { padding: 22px 0; }
-  .streaming-inner { flex-direction: column; gap: 12px; align-items: flex-start; }
-  .streaming-apps { overflow-x: auto; flex-wrap: nowrap; width: 100%; padding-bottom: 4px; gap: 16px; }
+  /* Streaming strip */
+  .streaming-strip { padding: 18px 0; }
+  .streaming-inner { flex-direction: column !important; gap: 10px; align-items: flex-start !important; }
+  .streaming-apps { overflow-x: auto; flex-wrap: nowrap; width: 100%; padding-bottom: 4px; gap: 14px; }
   .streaming-app { font-size: 12px; white-space: nowrap; }
 
-  /* Plans */
-  .plans { padding: 60px 0; }
-  .plans-grid { grid-template-columns: 1fr; max-width: 320px; margin-left: auto; margin-right: auto; gap: 14px; }
-  .plan-card { padding: 24px 18px 20px; }
-  .plan-card.featured { transform: none; box-shadow: 0 12px 40px rgba(0,40,85,0.5); }
-  .plan-card.featured:hover { transform: translateY(-5px); }
-  .plan-speed { font-size: 64px; }
-  .plan-price strong { font-size: 32px; }
-  .plans-guarantee { gap: 16px; flex-direction: column; align-items: center; }
+  /* Plans — 2 colunas menores no mobile */
+  .plans { padding: 48px 0; }
+  .plans .section-title { font-size: 20px; }
+  .plans-sub { font-size: 10px; }
+  .plans-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%; gap: 10px; margin-top: 28px;
+  }
+  .plan-card { padding: 18px 12px 16px; border-radius: 14px; }
+  .plan-card.featured { transform: none; box-shadow: 0 8px 28px rgba(0,40,85,0.5); border: 2px solid rgba(184,212,0,0.4); }
+  .plan-badge { font-size: 8px; padding: 4px 12px; }
+  .plan-name { font-size: 10px; margin-top: 18px; margin-bottom: 2px; }
+  .plan-card:not(.featured) .plan-name { margin-top: 8px; }
+  .plan-speed { font-size: 52px; letter-spacing: -2px; }
+  .plan-unit { font-size: 10px; margin-bottom: 10px; }
+  .plan-divider { width: 24px; margin-bottom: 10px; }
+  .plan-label { font-size: 9px; }
+  .plan-price { font-size: 11px; }
+  .plan-price strong { font-size: 26px; }
+  .plan-period { font-size: 9px; margin-bottom: 12px; }
+  .plan-streaming { padding: 8px; border-radius: 8px; margin-bottom: 12px; }
+  .plan-streaming-label { font-size: 8px; margin-bottom: 6px; }
+  .plan-streaming-app { font-size: 10px; padding: 3px 0; }
+  .plan-note { font-size: 8px; margin-bottom: 10px; }
+  .plan-card .btn-green { font-size: 11px; padding: 10px 12px; border-radius: 40px; width: 100%; justify-content: center; }
+  .plans-guarantee { gap: 12px; flex-direction: column; align-items: center; margin-top: 32px; }
+  .plans-guarantee-item { font-size: 12px; }
 
   /* About */
-  .about { min-height: 320px; }
-  .about::after { background: linear-gradient(to left, transparent 25%, rgba(0,26,61,0.7) 50%, var(--navy-dark) 70%, var(--navy-dark) 100%); }
+  .about { min-height: 300px; background-position: 80% center; }
+  .about::after { background: linear-gradient(to left, transparent 20%, rgba(0,26,61,0.65) 45%, var(--navy-dark) 68%, var(--navy-dark) 100%); }
   .about-inner { justify-content: flex-start; }
-  .about-content { padding: 36px 0; max-width: 100%; }
-  .about-title { font-size: 26px; }
-  .about-text { font-size: 14px; }
+  .about-content { padding: 32px 0; max-width: 65%; }
+  .about-title { font-size: 22px; margin-bottom: 14px; }
+  .about-text { font-size: 12.5px; line-height: 1.6; }
 
-  /* Testimonials */
-  .testimonials { padding: 50px 0; }
-  .testimonials-grid { grid-template-columns: 1fr; gap: 12px; margin-top: 28px; }
+  /* Testimonials — 2 por linha */
+  .testimonials { padding: 44px 0; }
+  .testimonials .section-title { font-size: 20px; }
+  .testimonials-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 24px; }
+  .t-card { padding: 14px 12px; }
+  .t-name { font-size: 11px; }
+  .t-text { font-size: 11px; }
 
   /* CTA */
-  .cta-section { padding: 48px 0; }
-  .cta-section .section-title { font-size: 20px; }
+  .cta-section { padding: 40px 0; }
+  .cta-section .section-title { font-size: 19px; }
+  .cta-section .section-sub { font-size: 13px; }
 
   /* FAQ */
-  .faq { padding: 50px 0; }
-  .faq-btn { font-size: 14px; }
+  .faq { padding: 44px 0; }
+  .faq .section-title { font-size: 20px; margin-bottom: 28px; }
+  .faq-btn { font-size: 13px; padding: 16px 0; }
 
   /* Footer */
-  .footer { padding: 36px 0 24px; }
-  .footer-logo img { height: 48px; }
+  .footer { padding: 32px 0 20px; }
+  .footer-logo img { height: 44px; }
+  .footer-copy { font-size: 11px; }
 
-  /* Section titles */
+  /* Section titles global */
   .section-title { font-size: 21px; }
   .section-sub { font-size: 13px; }
-  .plans-sub { font-size: 11px; letter-spacing: 0.04em; }
 
   /* WhatsApp */
-  .wa-float { bottom: 20px; right: 16px; width: 50px; height: 50px; }
+  .wa-float { bottom: 18px; right: 14px; width: 50px; height: 50px; }
   .wa-float svg { width: 26px; height: 26px; }
 }
 </style>
