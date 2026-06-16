@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Infomaxx — Internet Fibra Óptica. Quem conecta, confia. Planos com streaming incluso a partir de R$89/mês.">
+<title>Infomaxx — Internet Fibra Óptica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #002855;
+  --navy-dark: #001A3D;
+  --green: #B8D400;
+  --green-dark: #9BBB00;
+  --teal: #009DC5;
+  --teal-dark: #007FA3;
+  --dark: #111111;
+  --gray-bg: #F5F5F5;
+  --text-muted: #555555;
+  --maxw: 1180px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Montserrat', sans-serif; color: var(--dark); overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+
+/* ── UTILITIES ─────────────────────── */
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+.green { color: var(--green); }
+.teal  { color: var(--teal); }
+
+.btn-green {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--green); color: var(--navy-dark);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase;
+  padding: 14px 30px; border-radius: 50px; border: none;
+  cursor: pointer; text-decoration: none;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(184,212,0,0.4);
+  white-space: nowrap;
+}
+.btn-green:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(184,212,0,0.5); }
+.btn-green-lg { font-size: 15px; padding: 16px 36px; }
+
+.section-title {
+  font-size: clamp(22px, 3vw, 36px);
+  font-weight: 900; text-transform: uppercase; line-height: 1.15;
+  margin-bottom: 10px;
+}
+.section-sub { color: var(--text-muted); font-size: 15px; }
+
+/* ── REVEAL ─────────────────────────── */
+.js-ready .reveal {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.js-ready .reveal.visible { opacity: 1; transform: translateY(0); }
+.js-ready .reveal-delay-1 { transition-delay: 0.1s; }
+.js-ready .reveal-delay-2 { transition-delay: 0.2s; }
+.js-ready .reveal-delay-3 { transition-delay: 0.3s; }
+.js-ready .reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ── NAV ─────────────────────────────── */
+.nav {
+  position: sticky; top: 0; z-index: 200;
+  background: white; box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+}
+.nav-inner {
+  max-width: var(--maxw); margin: 0 auto; padding: 0 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 70px;
+}
+.nav-logo img { height: 44px; display: block; }
+.nav-menu { display: flex; align-items: center; gap: 36px; }
+.nav-menu a { font-size: 14px; font-weight: 600; color: var(--dark); transition: color 0.2s; }
+.nav-menu a:hover { color: var(--navy); }
+
+/* ── HERO ──────────────────────────── */
+.hero {
+  background: var(--navy-dark) url('hero.png') 62% center/cover no-repeat;
+  min-height: 580px; position: relative; overflow: hidden;
+}
+.hero::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to right,
+    var(--navy-dark) 0%, var(--navy-dark) 30%,
+    rgba(0,26,61,0.9) 44%,
+    rgba(0,26,61,0.3) 62%,
+    transparent 78%
+  );
+}
+.hero-inner {
+  max-width: var(--maxw); margin: 0 auto; padding: 0 28px;
+  min-height: 580px; display: flex; align-items: center;
+  position: relative; z-index: 1;
+}
+.hero-content { max-width: 540px; padding: 70px 0; }
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(184,212,0,0.15); border: 1px solid rgba(184,212,0,0.4);
+  color: var(--green); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 6px 14px; border-radius: 50px; margin-bottom: 20px;
+}
+.hero-title {
+  font-size: clamp(30px, 4vw, 56px);
+  font-weight: 900; text-transform: uppercase;
+  color: white; line-height: 1.06; margin-bottom: 18px;
+}
+.hero-sub {
+  color: rgba(255,255,255,0.82); font-size: 16px; line-height: 1.65;
+  margin-bottom: 34px; max-width: 420px;
+}
+.hero-badges {
+  display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px;
+}
+.hero-badge {
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.85); font-size: 12px; font-weight: 600;
+  padding: 6px 14px; border-radius: 50px;
+}
+
+/* ── BENEFITS ──────────────────────── */
+.benefits { background: white; padding: 80px 0; text-align: center; }
+.benefits-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 22px; margin-top: 44px;
+}
+.benefit-card {
+  background: var(--navy); border-radius: 16px;
+  padding: 36px 28px; text-align: left;
+}
+.benefit-icon { margin-bottom: 18px; }
+.benefit-icon svg { width: 48px; height: 48px; }
+.benefit-title {
+  font-size: 15px; font-weight: 800; text-transform: uppercase;
+  color: white; margin-bottom: 12px; line-height: 1.3;
+}
+.benefit-desc { font-size: 13.5px; color: rgba(255,255,255,0.75); line-height: 1.65; }
+
+/* ── MID BANNER ────────────────────── */
+.mid-banner {
+  background: var(--navy-dark) url('banner-mid.png') 42% center/cover no-repeat;
+  min-height: 440px; position: relative; overflow: hidden;
+}
+.mid-banner::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to left,
+    var(--navy-dark) 0%, var(--navy-dark) 32%,
+    rgba(0,26,61,0.88) 50%,
+    rgba(0,26,61,0.2) 70%,
+    transparent 84%
+  );
+}
+.mid-banner-inner {
+  max-width: var(--maxw); margin: 0 auto; padding: 0 28px;
+  min-height: 440px; display: flex; align-items: center; justify-content: flex-end;
+  position: relative; z-index: 1;
+}
+.mid-banner-content { max-width: 500px; padding: 60px 0; }
+.mid-banner-title {
+  font-size: clamp(20px, 2.8vw, 36px);
+  font-weight: 900; text-transform: uppercase;
+  color: white; line-height: 1.2; margin-bottom: 30px;
+}
+
+/* ── STREAMING STRIP ──────────────── */
+.streaming-strip { background: var(--navy); padding: 36px 0; }
+.streaming-inner {
+  max-width: var(--maxw); margin: 0 auto; padding: 0 28px;
+  display: flex; align-items: center; gap: 32px; flex-wrap: wrap;
+}
+.streaming-label {
+  color: var(--green); font-size: 11px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  white-space: nowrap; flex-shrink: 0;
+}
+.streaming-divider { width: 1px; height: 32px; background: rgba(255,255,255,0.15); flex-shrink: 0; }
+.streaming-apps { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.streaming-app {
+  color: rgba(255,255,255,0.65); font-size: 13px; font-weight: 600;
+  display: flex; align-items: center; gap: 6px;
+}
+.streaming-app::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--teal); flex-shrink: 0;
+}
+
+/* ── PLANS ─────────────────────────── */
+.plans { background: #0a0e18; padding: 90px 0; position: relative; overflow: hidden; }
+.plans::before {
+  content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 1100px; height: 500px;
+  background: radial-gradient(ellipse at center top, rgba(0,157,197,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.plans .section-title { text-align: center; color: white; }
+.plans-sub {
+  text-align: center; margin-top: 12px;
+  color: rgba(255,255,255,0.38); font-size: 13px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+.plans-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 18px; margin-top: 50px; align-items: center;
+}
+.plan-card {
+  background: #141825;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: 28px 20px 24px;
+  text-align: center; display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+.plan-card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(0,157,197,0.5), transparent);
+}
+.plan-card.featured::after {
+  background: linear-gradient(90deg, transparent, rgba(184,212,0,0.7), transparent);
+}
+.plan-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0,157,197,0.3);
+  box-shadow: 0 24px 56px rgba(0,0,0,0.45);
+}
+.plan-card.featured {
+  background: var(--navy);
+  border-color: rgba(184,212,0,0.25);
+  transform: scale(1.04);
+  box-shadow: 0 28px 60px rgba(0,40,85,0.6);
+}
+.plan-card.featured:hover { transform: scale(1.04) translateY(-6px); }
+.plan-badge {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  background: var(--green); color: var(--navy-dark);
+  font-size: 9px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 5px 18px; border-radius: 0 0 10px 10px;
+}
+.plan-name {
+  font-size: 11px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.08em; color: rgba(255,255,255,0.38);
+  margin-top: 22px; margin-bottom: 4px;
+}
+.plan-card.featured .plan-name { color: rgba(255,255,255,0.7); }
+.plan-card:not(.featured) .plan-name { margin-top: 10px; }
+.plan-speed {
+  font-size: 70px; font-weight: 900; line-height: 1; color: white; letter-spacing: -3px;
+}
+.plan-unit {
+  font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.28);
+  margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.06em;
+}
+.plan-card.featured .plan-unit { color: rgba(255,255,255,0.55); }
+.plan-divider {
+  width: 32px; height: 3px; border-radius: 2px; margin: 0 auto 14px;
+  background: rgba(0,157,197,0.5);
+}
+.plan-card.featured .plan-divider { background: var(--green); }
+.plan-label {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-bottom: 3px;
+}
+.plan-card.featured .plan-label { color: rgba(255,255,255,0.6); }
+.plan-price {
+  font-size: 13px; font-weight: 800; color: white; margin-bottom: 2px; line-height: 1.1;
+}
+.plan-price strong { font-size: 36px; }
+.plan-card.featured .plan-price strong { color: var(--green); }
+.plan-period { font-size: 10px; color: rgba(255,255,255,0.28); margin-bottom: 18px; }
+.plan-card.featured .plan-period { color: rgba(255,255,255,0.5); }
+
+/* streaming included */
+.plan-streaming {
+  background: rgba(0,157,197,0.1); border: 1px solid rgba(0,157,197,0.2);
+  border-radius: 10px; padding: 12px 10px; margin-bottom: 18px; text-align: left;
+}
+.plan-card.featured .plan-streaming {
+  background: rgba(184,212,0,0.1); border-color: rgba(184,212,0,0.25);
+}
+.plan-streaming-label {
+  font-size: 9px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--teal); margin-bottom: 8px;
+}
+.plan-card.featured .plan-streaming-label { color: var(--green); }
+.plan-streaming-app {
+  font-size: 11.5px; color: rgba(255,255,255,0.6);
+  padding: 4px 0; display: flex; align-items: center; gap: 6px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.plan-streaming-app:last-child { border-bottom: none; padding-bottom: 0; }
+.plan-card.featured .plan-streaming-app { color: rgba(255,255,255,0.82); }
+.plan-streaming-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--teal); flex-shrink: 0;
+}
+.plan-card.featured .plan-streaming-dot { background: var(--green); }
+
+.plan-note {
+  font-size: 9px; color: rgba(255,255,255,0.22); margin-bottom: 16px;
+  line-height: 1.5; text-align: left;
+}
+
+.plans-guarantee {
+  display: flex; align-items: center; justify-content: center; gap: 36px;
+  margin-top: 48px; flex-wrap: wrap;
+}
+.plans-guarantee-item {
+  display: flex; align-items: center; gap: 9px;
+  color: rgba(255,255,255,0.35); font-size: 13px; font-weight: 600;
+}
+
+/* ── ABOUT ─────────────────────────── */
+.about {
+  background: var(--navy-dark) url('banner-mid.png') 48% center/cover no-repeat;
+  min-height: 440px; position: relative; overflow: hidden;
+}
+.about::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to right,
+    transparent 16%,
+    rgba(0,26,61,0.3) 34%,
+    rgba(0,26,61,0.88) 52%,
+    var(--navy-dark) 66%,
+    var(--navy-dark) 100%
+  );
+}
+.about-inner {
+  max-width: var(--maxw); margin: 0 auto; padding: 0 28px;
+  min-height: 440px; display: flex; align-items: center; justify-content: flex-end;
+  position: relative; z-index: 1;
+}
+.about-content { max-width: 500px; padding: 60px 0; }
+.about-title {
+  font-size: clamp(26px, 3.5vw, 46px);
+  font-weight: 900; text-transform: uppercase;
+  color: white; line-height: 1.1; margin-bottom: 20px;
+}
+.about-text { color: rgba(255,255,255,0.82); font-size: 16px; line-height: 1.75; }
+
+/* ── TESTIMONIALS ──────────────────── */
+.testimonials { background: white; padding: 80px 0; }
+.testimonials .section-title { text-align: center; }
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 16px; margin-top: 44px;
+}
+.t-card { background: var(--gray-bg); border-radius: 12px; padding: 18px 14px; }
+.t-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.t-avatar {
+  width: 38px; height: 38px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 800; color: white; flex-shrink: 0;
+}
+.t-name { font-size: 12px; font-weight: 700; color: var(--dark); }
+.t-stars { font-size: 12px; color: var(--green); margin-top: 2px; }
+.t-text { font-size: 11.5px; color: var(--text-muted); line-height: 1.6; }
+
+/* ── CTA ───────────────────────────── */
+.cta-section { background: var(--green); padding: 64px 0; text-align: center; }
+.cta-section .section-title { color: var(--navy-dark); font-size: clamp(20px, 2.5vw, 30px); }
+.cta-section .section-sub { color: rgba(0,26,61,0.65); margin: 10px 0 28px; }
+
+/* ── FAQ ───────────────────────────── */
+.faq { background: white; padding: 80px 0; }
+.faq .section-title { text-align: center; margin-bottom: 40px; }
+.faq-list { max-width: 760px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid #EBEBEB; }
+.faq-btn {
+  width: 100%; background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 0; font-family: 'Montserrat', sans-serif;
+  font-size: 15px; font-weight: 600; color: var(--dark); text-align: left; gap: 16px;
+}
+.faq-icon {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 2px solid var(--teal); color: var(--teal);
+  display: grid; place-items: center; flex-shrink: 0;
+  font-size: 20px; font-weight: 300; line-height: 1;
+  transition: transform 0.3s, background 0.2s, color 0.2s;
+}
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+  background: var(--teal); color: white;
+}
+.faq-answer {
+  font-size: 14px; color: var(--text-muted); line-height: 1.75;
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease, padding-bottom 0.3s;
+}
+.faq-item.open .faq-answer { max-height: 300px; padding-bottom: 18px; }
+
+/* ── FOOTER ────────────────────────── */
+.footer { background: var(--navy); padding: 44px 0 28px; text-align: center; }
+.footer-logo img { height: 56px; display: block; margin: 0 auto; }
+.footer-copy { color: rgba(255,255,255,0.4); font-size: 12px; margin-top: 18px; line-height: 1.6; }
+
+/* ── WHATSAPP FLOAT ────────────────── */
+.wa-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  width: 58px; height: 58px; border-radius: 50%;
+  background: #25D366; color: white;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.wa-float:hover { transform: scale(1.12); box-shadow: 0 6px 28px rgba(37,211,102,0.6); }
+.wa-float svg { width: 30px; height: 30px; }
+.wa-tooltip {
+  position: absolute; right: 68px; top: 50%; transform: translateY(-50%);
+  background: var(--dark); color: white;
+  font-size: 12px; font-weight: 600; white-space: nowrap;
+  padding: 6px 12px; border-radius: 6px; pointer-events: none;
+  opacity: 0; transition: opacity 0.2s;
+}
+.wa-float:hover .wa-tooltip { opacity: 1; }
+
+/* ── RESPONSIVE ────────────────────── */
+@media (max-width: 1020px) {
+  .plans-grid { grid-template-columns: repeat(2, 1fr); }
+  .plan-card.featured { transform: none; box-shadow: 0 12px 40px rgba(0,40,85,0.4); }
+  .plan-card.featured:hover { transform: translateY(-6px); }
+}
+@media (max-width: 920px) {
+  .benefits-grid { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+  .streaming-inner { justify-content: center; }
+  .streaming-divider { display: none; }
+}
+@media (max-width: 640px) {
+  .plans-grid { grid-template-columns: 1fr; max-width: 360px; margin-left: auto; margin-right: auto; }
+  .nav-menu a:not(.btn-green) { display: none; }
+  .nav-menu { gap: 16px; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .hero-title { font-size: 28px; }
+  .hero-content { padding: 50px 0; }
+  .hero-badges { display: none; }
+  .wa-float { bottom: 20px; right: 20px; width: 52px; height: 52px; }
+  .plans-guarantee { gap: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────── -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <img src="logo.png" alt="Infomaxx">
+    </a>
+    <nav class="nav-menu">
+      <a href="#planos">Planos</a>
+      <a href="#contato">Fale Conosco</a>
+      <a href="#planos" class="btn-green">Assinar Já</a>
+    </nav>
+  </div>
+</nav>
+
+<!-- ── HERO ─────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content reveal">
+      <div class="hero-tag">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><circle cx="5" cy="5" r="5"/></svg>
+        Quem conecta, confia
+      </div>
+      <h1 class="hero-title">
+        INTERNET FIBRA<br>
+        QUE VOCÊ PODE<br>
+        <span style="color:var(--green)">CONFIAR!</span>
+      </h1>
+      <p class="hero-sub">Planos de fibra óptica com streaming incluso. Velocidade, estabilidade e suporte de quem realmente te apoia.</p>
+      <div class="hero-badges">
+        <span class="hero-badge">100% Fibra Óptica</span>
+        <span class="hero-badge">Streaming Incluso</span>
+        <span class="hero-badge">Suporte 24h</span>
+      </div>
+      <a href="#planos" class="btn-green btn-green-lg">Quero Assinar Agora</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── BENEFITS ──────────────────────── -->
+<section class="benefits">
+  <div class="container">
+    <h2 class="section-title reveal">POR QUE ESCOLHER A <span class="teal">INFOMAXX?</span></h2>
+    <p class="section-sub reveal">Tecnologia e atendimento que fazem a diferença</p>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal reveal-delay-1">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 48 48" fill="none">
+            <circle cx="24" cy="40" r="5" fill="#B8D400"/>
+            <path d="M14,31 Q24,20 34,31" stroke="#B8D400" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <path d="M5,22 Q24,3 43,22" stroke="#B8D400" stroke-width="4" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="benefit-title">100% FIBRA ÓPTICA</h3>
+        <p class="benefit-desc">Conexão de última geração com ultravelocidade e estabilidade garantida em todos os planos.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-2">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 48 48" fill="none">
+            <rect x="6" y="8" width="36" height="26" rx="4" stroke="#009DC5" stroke-width="3.5" fill="none"/>
+            <path d="M16 40h16M24 34v6" stroke="#009DC5" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M17 21l4 4 10-10" stroke="#B8D400" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="benefit-title">STREAMING INCLUSO</h3>
+        <p class="benefit-desc">Aproveite plataformas de entretenimento e serviços exclusivos inclusos no seu plano sem custo extra.</p>
+      </div>
+      <div class="benefit-card reveal reveal-delay-3">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 48 48" fill="none">
+            <path d="M8 20C8 13.4 13.4 8 20 8H28C34.6 8 40 13.4 40 20V26C40 29.3 37.3 32 34 32H30V36L22 32H14C10.7 32 8 29.3 8 26V20Z" stroke="white" stroke-width="3.5" fill="none"/>
+            <circle cx="18" cy="22" r="2.5" fill="white"/>
+            <circle cx="24" cy="22" r="2.5" fill="white"/>
+            <circle cx="30" cy="22" r="2.5" fill="white"/>
+          </svg>
+        </div>
+        <h3 class="benefit-title">SUPORTE EFICIENTE</h3>
+        <p class="benefit-desc">Equipe técnica disponível para resolver qualquer problema com rapidez e qualidade no atendimento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MID BANNER ────────────────────── -->
+<section class="mid-banner">
+  <div class="mid-banner-inner">
+    <div class="mid-banner-content reveal">
+      <h2 class="mid-banner-title">
+        FIBRA ÓPTICA DE VERDADE<br>
+        COM STREAMING<br>
+        <span style="color:var(--green)">INCLUSO NO PLANO</span>
+      </h2>
+      <a href="#planos" class="btn-green btn-green-lg">Ver Planos</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── STREAMING STRIP ──────────────── -->
+<div class="streaming-strip">
+  <div class="streaming-inner">
+    <span class="streaming-label">Streaming disponível</span>
+    <div class="streaming-divider"></div>
+    <div class="streaming-apps">
+      <span class="streaming-app">Max</span>
+      <span class="streaming-app">Deezer Premium</span>
+      <span class="streaming-app">Zapping Lite</span>
+      <span class="streaming-app">Tocalivros</span>
+      <span class="streaming-app">IXER Telemedicina</span>
+      <span class="streaming-app">Hoppe</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── PLANS ──────────────────────────── -->
+<section class="plans" id="planos">
+  <div class="container">
+    <h2 class="section-title reveal">ESCOLHA O PLANO <span class="teal">IDEAL PRA VOCÊ</span></h2>
+    <p class="plans-sub reveal">Fibra óptica · Streaming incluso · Instalação grátis</p>
+    <div class="plans-grid">
+
+      <!-- 100 Mega -->
+      <div class="plan-card reveal reveal-delay-1">
+        <div class="plan-name">Plano Inicial</div>
+        <div class="plan-speed">100</div>
+        <div class="plan-unit">MEGA</div>
+        <div class="plan-divider"></div>
+        <div class="plan-label">Por apenas</div>
+        <div class="plan-price">R$ <strong>89</strong><span style="font-size:12px">/mês</span></div>
+        <div class="plan-period">Pagando até o vencimento</div>
+        <div class="plan-streaming">
+          <div class="plan-streaming-label">Streaming incluso</div>
+          <div class="plan-streaming-app"><span class="plan-streaming-dot"></span>Hoppe</div>
+          <div class="plan-streaming-app"><span class="plan-streaming-dot"></span>Tocalivros</div>
+          <div class="plan-streaming-app"><span class="plan-streaming-dot"></span>Zapping Lite</div>
+        </div>
+        <div class="plan-note">*Conferir grade de aplicativos disponíveis</div>
+        <a href="https://api.whatsapp.com/send/?phone=555137581242&text=Ol%C3%A1%21+Quero+o+plano+de+100+Mega%21" target="_blank" class="btn-green">Assinar Agora</a>
+      </div>
+
+      <!-- 350 Mega -->
+      <div class="plan-card reveal reveal-delay-2">
+        <div class="plan-name">Plano Família</div>
+        <div class="plan-speed">350</div>
+        <div class="plan-unit">MEGA</div>
+        <div class="plan-divider"></div>
+        <div class="plan-label">Por apenas</div>
+        <div class="plan-price">R$ <strong>99</strong><span style="font-size:12px">/mês</span></div>
+        <div class="plan-period">Pagando até o vencimento</div>
+        <div class="plan-streaming">
+          <div class="plan-streaming-label">Streaming incluso</div>
+          <div class="plan-streaming-app"><span class="plan-streaming-dot"></span>Max</div>
+          <div class="plan-streaming-app"><span class="plan-streaming-dot"></span>Tocalivros</div>
+          <div class="plan-streaming-app"><span class="plan-streaming-dot"></span>IXER Telemedicina</div>
+        </div>
+        <div class="plan-note">*Conferir grade de aplicativos disponíveis</div>
+        <a href="https://api.whatsapp.com/send/?phone=555137581242&text=Ol%C3%A1%21+Quero+o+plano+de+350+Mega%21" target="_blank" class="btn-green">Assinar Agora</a>
+      </div>
+
+      <!-- 700 Mega (destaque) -->
+      <div class="plan-card featured reveal reveal-delay-3">
+        <div class="plan-badge">Mais Vendido</div>
+        <div class="plan-name">Plano Ultra</div>
+        <div class="plan-speed">700</div>
+        <div class="plan-unit">MEGA</div>
+        <div class="plan-divider"></div>
+        <div class="plan-label">Por apenas</div>
+        <div class="plan-price">R$ <strong>109</strong><span style="font-size:12px">/mês</span></div>
+        <div class="plan-period">Pagando até o vencimento</div>
+        <div class="plan-streaming">
+          <div class="plan-streaming-label">Streaming incluso</div>
+          <div class="plan-streaming-app"><span class="plan-streaming-dot"></span>Deezer Premium</div>
+          <div class="plan-streaming-app"><span class="plan-streaming-dot"></span>Tocalivros</div>
+          <div class="plan-streaming-app"><span class="plan-streaming-dot"></span>Zapping Lite</div>
+        </div>
+        <div class="plan-note" style="color:rgba(255,255,255,0.3)">*Conferir grade de aplicativos disponíveis</div>
+        <a href="https://api.whatsapp.com/send/?phone=555137581242&text=Ol%C3%A1%21+Quero+o+plano+de+700+Mega%21" target="_blank" class="btn-green">Assinar Agora</a>
+      </div>
+
+      <!-- 1000 Mega -->
+      <div class="plan-card reveal reveal-delay-4">
+        <div class="plan-name">Plano Infinity</div>
+        <div class="plan-speed" style="font-size:52px">1000</div>
+        <div class="plan-unit">MEGA</div>
+        <div class="plan-divider"></div>
+        <div class="plan-label">Por apenas</div>
+        <div class="plan-price">R$ <strong>179</strong><span style="font-size:12px">/mês</span></div>
+        <div class="plan-period">Pagando até o vencimento</div>
+        <div class="plan-streaming">
+          <div class="plan-streaming-label">Streaming incluso</div>
+          <div class="plan-streaming-app"><span class="plan-streaming-dot"></span>Max</div>
+          <div class="plan-streaming-app"><span class="plan-streaming-dot"></span>IXER Telemedicina</div>
+          <div class="plan-streaming-app"><span class="plan-streaming-dot"></span>Tocalivros</div>
+        </div>
+        <div class="plan-note">*Conferir grade de aplicativos disponíveis</div>
+        <a href="https://api.whatsapp.com/send/?phone=555137581242&text=Ol%C3%A1%21+Quero+o+plano+de+1000+Mega%21" target="_blank" class="btn-green">Assinar Agora</a>
+      </div>
+
+    </div>
+    <div class="plans-guarantee reveal">
+      <div class="plans-guarantee-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Instalação grátis
+      </div>
+      <div class="plans-guarantee-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Sem franquia de dados
+      </div>
+      <div class="plans-guarantee-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Suporte 24h
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ───────────────────────────── -->
+<section class="about">
+  <div class="about-inner">
+    <div class="about-content reveal">
+      <h2 class="about-title">CONHEÇA A<br><span style="color:var(--green)">INFOMAXX!</span></h2>
+      <p class="about-text">Somos um provedor de internet comprometido em oferecer a melhor conexão com qualidade, estabilidade e preço justo. Nossa missão é simples: conectar você e sua família com quem você pode realmente confiar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ────────────────────── -->
+<section class="testimonials">
+  <div class="container">
+    <h2 class="section-title reveal">QUEM TEM INFOMAXX<br>E <span class="teal">RECOMENDA</span></h2>
+    <div class="testimonials-grid">
+      <div class="t-card reveal reveal-delay-1">
+        <div class="t-header">
+          <div class="t-avatar" style="background:#002855">MF</div>
+          <div><div class="t-name">Marcos Ferreira</div><div class="t-stars">★★★★★</div></div>
+        </div>
+        <p class="t-text">Internet estável e rápida. O streaming incluso no plano é um diferencial incrível, economizo muito!</p>
+      </div>
+      <div class="t-card reveal reveal-delay-1">
+        <div class="t-header">
+          <div class="t-avatar" style="background:#009DC5">JS</div>
+          <div><div class="t-name">Juliana Santos</div><div class="t-stars">★★★★★</div></div>
+        </div>
+        <p class="t-text">Trabalho em home office e nunca tive problemas. Velocidade constante e suporte super ágil.</p>
+      </div>
+      <div class="t-card reveal reveal-delay-2">
+        <div class="t-header">
+          <div class="t-avatar" style="background:#B8D400; color:#002855">RA</div>
+          <div><div class="t-name">Roberto Alves</div><div class="t-stars">★★★★★</div></div>
+        </div>
+        <p class="t-text">Instalação no mesmo dia e tudo funcionando perfeitamente. Recomendo para todos os vizinhos!</p>
+      </div>
+      <div class="t-card reveal reveal-delay-2">
+        <div class="t-header">
+          <div class="t-avatar" style="background:#7C3AED">PC</div>
+          <div><div class="t-name">Patrícia Costa</div><div class="t-stars">★★★★★</div></div>
+        </div>
+        <p class="t-text">Minha família toda usa a internet ao mesmo tempo sem travar. Melhor decisão que tomei!</p>
+      </div>
+      <div class="t-card reveal reveal-delay-3">
+        <div class="t-header">
+          <div class="t-avatar" style="background:#EC4899">LM</div>
+          <div><div class="t-name">Lucas Martins</div><div class="t-stars">★★★★★</div></div>
+        </div>
+        <p class="t-text">Jogo online sem lag e ainda tenho Deezer no plano. Custo-benefício imbatível!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ─────────────────────────────── -->
+<section class="cta-section" id="contato">
+  <div class="container reveal">
+    <h2 class="section-title">QUER SABER MAIS? FALE CONOSCO</h2>
+    <p class="section-sub">Fale com um de nossos atendentes agora mesmo!</p>
+    <a href="https://api.whatsapp.com/send/?phone=555137581242&text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+os+planos%21" target="_blank" class="btn-green btn-green-lg" style="margin-top:28px">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Entrar em Contato
+    </a>
+  </div>
+</section>
+
+<!-- ── FAQ ────────────────────────────── -->
+<section class="faq">
+  <div class="container">
+    <h2 class="section-title reveal">PERGUNTAS <span class="teal">FREQUENTES</span></h2>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <button class="faq-btn">Como funciona a instalação da internet?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">Após a contratação, nossa equipe agenda a instalação no melhor horário para você. O processo é rápido, organizado e tudo funcionará no mesmo dia.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn">O streaming já vem incluso automaticamente?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">Sim! Os aplicativos de streaming são disponibilizados conforme o plano contratado. Consulte a grade completa de aplicativos disponíveis para cada plano.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn">A internet cai em dias de chuva?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">Nossa infraestrutura de fibra óptica é robusta e projetada para funcionar em qualquer condição climática. A fibra não sofre interferência de chuva ou variações de temperatura.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn">O que significa "pagando até o vencimento"?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">Os valores exibidos são promocionais e válidos quando o pagamento é realizado até a data de vencimento da fatura. Após o vencimento, pode haver acréscimo de juros e multa.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ──────────────────────────── -->
+<footer class="footer">
+  <div class="footer-logo">
+    <img src="logo.png" alt="Infomaxx" class="footer-logo-img">
+  </div>
+  <p class="footer-copy">© 2026 Infomaxx. Todos os direitos reservados.<br>Quem conecta, confia.</p>
+</footer>
+
+<!-- ── WHATSAPP FLUTUANTE ──────────────── -->
+<a href="https://api.whatsapp.com/send/?phone=555137581242&text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+os+planos%21" target="_blank" class="wa-float" aria-label="Fale pelo WhatsApp">
+  <span class="wa-tooltip">Fale conosco!</span>
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Scroll reveal
+  document.documentElement.classList.add('js-ready');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
